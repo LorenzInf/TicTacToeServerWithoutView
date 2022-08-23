@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class TiciTaciTociServer extends Server {
 
-    private static String ticTacToe = ProgramController.ANSI_CYAN + "[TicTacToe] " + ProgramController.ANSI_RESET;
+    private static final String ticTacToe = ProgramController.ANSI_CYAN + "[TicTacToe] " + ProgramController.ANSI_RESET;
 
     private boolean gameRunning;
 
@@ -15,12 +15,11 @@ public class TiciTaciTociServer extends Server {
     private String xIP;
     private int xPort;
 
-    private boolean oTaken;
     private String oIP;
     private int oPort;
 
     private boolean xTurn;
-    private Integer[] playingField = new Integer[9];
+    private final Integer[] playingField = new Integer[9];
 
     public TiciTaciTociServer(int pPort) {
         super(pPort);
@@ -65,13 +64,12 @@ public class TiciTaciTociServer extends Server {
                     //Wenn X noch mal versucht zu joinen
                 } else {
                     send(pClientIP, pClientPort, ticTacToe + "You've already joined as X.");
-                    System.out.println("xport: " + xPort + "\nxIP: " + xIP + "\npPort: " + pClientPort + "\npIP: " + pClientIP);
                 }
             }
 
             //WENN DAS SPIEL SCHON LÄUFT -------------------------------------------------------------------------------
             //Wenn ein dritter Spieler versucht zu joinen, während das Spiel läuft
-        } else if(pMessage.equals("join") && gameRunning) {
+        } else if(pMessage.equals("join")) {
             send(pClientIP, pClientPort, ticTacToe + "You can't join right now, a game is already in progress.");
 
         } else if (pMessage.equals("giveUp")){ //Jemand ruft give up auf
