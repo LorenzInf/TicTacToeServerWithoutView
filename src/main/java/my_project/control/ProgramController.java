@@ -1,11 +1,7 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.abitur.datenstrukturen.Queue;
-import my_project.model.Ball;
-import my_project.view.InputManager;
-
-import java.awt.event.MouseEvent;
+import my_project.model.TiciTaciTociServer;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -15,8 +11,8 @@ public class ProgramController {
 
     //Attribute
 
-
     // Referenzen
+    private TiciTaciTociServer server = new TiciTaciTociServer(6969);
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
 
     /**
@@ -35,10 +31,7 @@ public class ProgramController {
      * Sie erstellt die leeren Datenstrukturen, zu Beginn nur eine Queue
      */
     public void startProgram() {
-        // Erstelle ein Objekt der Klasse Ball und lasse es zeichnen
-        Ball ball1 = new Ball(150,150);
-        viewController.draw(ball1);
-
+        TiciTaciTociServer server = new TiciTaciTociServer(6969);
     }
 
     /**
